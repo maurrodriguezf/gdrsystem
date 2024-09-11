@@ -1,0 +1,435 @@
+TABLES: kna1, acdoca, makt, mara, regup, knvv, t005t, stpo, vbfa, vbap, vbrp, likp, vbak.
+
+
+SELECTION-SCREEN BEGIN OF BLOCK b1.
+  SELECT-OPTIONS: s_rldnr FOR acdoca-rldnr,
+                  s_rbukrs FOR acdoca-rbukrs,
+                  s_gjahr FOR acdoca-gjahr,
+                  s_racct FOR acdoca-racct,
+                  s_awref FOR acdoca-awref,
+                  s_bldat FOR acdoca-bldat,
+                  s_blart FOR acdoca-blart.
+SELECTION-SCREEN END OF BLOCK b1.
+
+TYPES: BEGIN OF gt_alv,
+         rldnr    LIKE acdoca-rldnr,
+         rbukrs   LIKE acdoca-rbukrs,
+         gjahr    LIKE acdoca-gjahr,   " NUMC 4
+         belnr    LIKE acdoca-belnr,
+         docln    LIKE acdoca-docln,   " NUMC 6
+         awref    LIKE acdoca-awref,
+         awitem   LIKE acdoca-awitem,
+         rwcur    LIKE acdoca-rwcur,
+         runit    LIKE acdoca-runit,
+         racct    LIKE acdoca-racct,
+         wsl      LIKE acdoca-wsl,
+         msl      LIKE acdoca-msl,
+         budat    LIKE acdoca-budat,
+         bldat    LIKE acdoca-bldat,
+         blart    LIKE acdoca-blart,
+         rcomp    LIKE acdoca-rcomp,
+         matnr    LIKE acdoca-matnr,
+         werks    LIKE acdoca-werks,
+         kunnr    LIKE acdoca-kunnr,
+         bwtar    LIKE acdoca-bwtar,
+         bwkey    LIKE acdoca-bwkey,
+         matkl_mm LIKE acdoca-matkl_mm,
+         fkart    LIKE acdoca-fkart,
+         vkorg    LIKE acdoca-vkorg,
+         vtweg    LIKE acdoca-vtweg,
+         spart    LIKE acdoca-spart,
+         land1    LIKE acdoca-land1,
+         maktx    LIKE makt-maktx,
+         name1    LIKE kna1-name1,
+         matkl    LIKE mara-matkl,
+         zlsch    LIKE regup-zlsch,
+         zterm    LIKE regup-zterm,
+         vkgrp    LIKE knvv-vkgrp,
+         landx    LIKE t005t-landx,
+         menge    LIKE mseg-menge,
+         lifnr    LIKE acdoca-lifnr,
+         vkbur    LIKE knvv-vkbur,
+         vbelv    LIKE vbfa-vbelv,
+         posnr    LIKE vbap-posnr,
+         fkimg    LIKE vbrp-fkimg,
+         xblnr    LIKE bkpf-xblnr,
+         vdatu    LIKE vbak-vdatu,
+       END OF   gt_alv.
+
+DATA: gi_alv TYPE STANDARD TABLE OF gt_alv,
+      gw_alv LIKE LINE OF gi_alv.
+
+DATA: gi_catalogo  TYPE slis_t_fieldcat_alv,
+      gwa_catalogo LIKE LINE OF gi_catalogo.
+
+
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'RLDNR'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'RLDNR'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'RBUKRS'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'RBUKRS'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'gjahr'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'GJAHR'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'BELNR'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'BELNR'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'DOCLN'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'DOCLN'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'AWREF'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'AWREF'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'AWITEM'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'AWITEM'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'RUNIT'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'RUNIT'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'RWCUR'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'RWCUR'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'RACCT'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'RACCT'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'WSL'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'WSL'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'MSL'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'MSL'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'BUDAT'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'BUDAT'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'BLDAT'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'BLDAT'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'BLART'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'BLART'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'RCOMP'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'RCOMP'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'MATNR'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'MATNR'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'WERKS'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'WERKS'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'KUNNR'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'KUNNR'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'BWTAR'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'BWTAR'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'BWKEY'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'BWKEY'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'MATKL_MM'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'MATKL_MM'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'FKART'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'FKART'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'VKORG'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'VKORG'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'VTWEG'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'VTWEG'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'SPART'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'SPART'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'LAND1'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'LAND1'.
+gwa_catalogo-ref_tabname = 'ACDOCA'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'maktx'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'maktx'.
+gwa_catalogo-ref_tabname = 'makt'.
+gwa_catalogo-seltext_m = 'Producto'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'name1'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'name1'.
+gwa_catalogo-ref_tabname = 'kna1'.
+gwa_catalogo-seltext_m = 'Cliente'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'matkl'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'matkl'.
+gwa_catalogo-ref_tabname = 'mara'.
+gwa_catalogo-seltext_m = 'Tipo producto'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'zlsch'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'zlsch'.
+gwa_catalogo-ref_tabname = 'regup'.
+gwa_catalogo-seltext_m = 'Medio de pago'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'zterm'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'zterm'.
+gwa_catalogo-ref_tabname = 'regup'.
+gwa_catalogo-seltext_m = 'Condicion de pago'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'vkgrp'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'vkgrp'.
+gwa_catalogo-ref_tabname = 'knvv'.
+gwa_catalogo-seltext_m = 'Linea de negocios'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'landx'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'landx'.
+gwa_catalogo-ref_tabname = 't005t'.
+gwa_catalogo-seltext_m = 'Pais'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'menge'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'menge'.
+gwa_catalogo-ref_tabname = 'stpo'.
+gwa_catalogo-seltext_m = 'Kilo/Litro/Caja'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'lifnr'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'lifnr'.
+gwa_catalogo-ref_tabname = 'acdoca'.
+gwa_catalogo-seltext_m = 'Número Proveedor'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'vkbur'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'vkbur'.
+gwa_catalogo-ref_tabname = 'knvv'.
+gwa_catalogo-seltext_m = 'Oficina Ventas'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'vbelv'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'vbelv'.
+gwa_catalogo-ref_tabname = 'vbfa'.
+gwa_catalogo-seltext_m = 'Documento Comercial'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'posnr'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'posnr'.
+gwa_catalogo-ref_tabname = 'vbap'.
+gwa_catalogo-seltext_m = 'Posicion de contrato'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'fkimg'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'fkimg'.
+gwa_catalogo-ref_tabname = 'vbrp'.
+gwa_catalogo-seltext_m = 'Cantidad contrato'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'xblnr'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'xblnr'.
+gwa_catalogo-ref_tabname = 'likp'.
+gwa_catalogo-seltext_m = 'Numero Dcto ref'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+CLEAR gwa_catalogo.
+gwa_catalogo-fieldname = 'vdatu'.
+gwa_catalogo-tabname   = 'GI_ALV'.
+gwa_catalogo-ref_fieldname = 'vdatu'.
+gwa_catalogo-ref_tabname = 'vbak'.
+gwa_catalogo-seltext_m = 'Fecha entrega pref'.
+APPEND gwa_catalogo TO gi_catalogo.
+
+DATA: gwa_layout   TYPE slis_layout_alv.
+
+gwa_layout-zebra      = 'X'.
+gwa_layout-colwidth_optimize = 'X'.
+
+
+
+* Añadir datos ALV
+
+SELECT a~rldnr a~rbukrs a~gjahr a~belnr a~docln a~awref a~awitem a~rwcur
+       a~runit a~racct a~wsl a~msl a~budat a~bldat a~blart a~rcomp a~matnr
+       a~werks a~kunnr a~bwtar a~bwkey a~matkl_mm a~fkart a~vkorg a~vtweg
+       a~spart a~land1 b~maktx c~name1 d~matkl e~zlsch e~zterm f~vkgrp g~landx h~menge a~lifnr
+       f~vkbur i~vbelv j~posnr k~fkimg l~xblnr m~vdatu
+                                                                      INTO TABLE gi_alv FROM acdoca AS a
+                                                                          INNER JOIN makt AS b
+                                                                         ON a~matnr EQ b~matnr and b~spras eq sy-langu
+                                                                      INNER JOIN kna1 AS c
+                                                                         ON a~kunnr EQ c~kunnr and c~spras eq sy-langu
+                                                                      INNER JOIN mara AS d
+                                                                         ON a~matnr EQ d~matnr and a~spart eq d~spart
+                                                                      INNER JOIN regup AS e
+                                                                         ON a~bldat EQ e~bldat
+                                                                      INNER JOIN knvv AS f
+                                                                         ON a~kunnr EQ f~kunnr
+                                                                      INNER JOIN t005t AS g
+                                                                         ON a~land1 EQ g~land1 and g~spras eq sy-langu
+                                                                      INNER JOIN stpo AS h
+                                                                         ON a~matkl EQ h~matkl
+                                                                      INNER JOIN vbfa AS i
+                                                                         ON a~matnr EQ i~matnr
+                                                                      INNER JOIN vbap AS j
+                                                                         ON a~matnr EQ j~matnr
+                                                                      inner join vbrp as k
+                                                                         on a~matnr eq k~matnr
+                                                                      inner join likp as l
+                                                                         on a~kunnr eq l~kunnr and a~bldat eq l~bldat
+                                                                      inner join vbak as m
+                                                                         on a~vkorg eq m~vkorg
+                                                                      WHERE a~rldnr IN s_RLDNR
+                                                                      AND a~rbukrs IN s_Rbukrs
+                                                                      AND a~gjAHr IN s_gjahr
+                                                                      AND a~racct IN s_racct
+                                                                      AND a~awref IN s_awref
+                                                                      AND a~bldat IN s_bldat
+                                                                      AND a~blart IN s_blart.
+
+
+
+CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+  EXPORTING
+    i_callback_program = sy-repid
+    is_layout          = gwa_layout
+    it_fieldcat        = gi_catalogo
+  TABLES
+    t_outtab           = gi_alv
+  EXCEPTIONS
+    program_error      = 1
+    OTHERS             = 2.
